@@ -8,7 +8,7 @@ const Color = {
   grey: '#BABBC3',
   light: '#F3F4FB',
   darkBlue: '#7978B5',
-  red: 'red'
-};
+  red: 'red',
+}
 
-export default Color;
+export default Color

@@ -1,5 +1,5 @@
-import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import React from 'react'
+import {Text, TouchableOpacity} from 'react-native'
 
 export default function Button({backgroundColor, label, textColor, onPress}) {
   return (
@@ -11,16 +11,16 @@ export default function Button({backgroundColor, label, textColor, onPress}) {
         alignItems: 'center',
         width: 300,
         paddingVertical: 5,
-        marginVertical: 10
+        marginVertical: 10,
       }}>
       <Text
         style={{
           color: textColor,
           fontSize: 20,
-          fontWeight: 'bold'
+          fontWeight: 'bold',
         }}>
         {label}
       </Text>
     </TouchableOpacity>
-  );
+  )
 }

@@ -42,14 +42,14 @@ export default function SignUp({navigation}) {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Loader visible={loading} />
-
       <View style={styles.freeAreaContainer} />
 
       <View style={styles.subContainer}>
-        <Text style={styles.titleText}>Welcome Back</Text>
-        <Text style={styles.subTitleText}>Login to your account</Text>
+        <Text style={styles.titleText}>Welcome</Text>
+        <Text style={styles.subTitleText}>Create a new account</Text>
+
         <Input
           placeHolder="Enter your e-mail address"
           iconName="mail-outline"
@@ -78,7 +78,7 @@ export default function SignUp({navigation}) {
         <Input
           placeHolder="Enter your retry password"
           iconName="md-lock-closed-outline"
-          label="Password"
+          label="Password Again"
           onChangeText={text => HandleOnchange(text, 'password')}
           onFocus={() => HandleError(null, 'password')}
           error={errors.password}
@@ -94,13 +94,12 @@ export default function SignUp({navigation}) {
           />
         </View>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     width: '100%',
     backgroundColor: Color.darkGreen,
     alignItems: 'center',

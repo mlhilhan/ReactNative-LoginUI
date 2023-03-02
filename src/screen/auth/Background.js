@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 import {
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
   Button,
-  ImageBackground
-} from 'react-native';
+  ImageBackground,
+} from 'react-native'
 
 export default function Background({children}) {
   return (
@@ -17,5 +17,5 @@ export default function Background({children}) {
       />
       <View style={{position: 'absolute'}}>{children}</View>
     </View>
-  );
+  )
 }

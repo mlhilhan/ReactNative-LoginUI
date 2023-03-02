@@ -50,7 +50,7 @@ export default function Login({navigation}) {
         <Text style={styles.subTitleText}>Login to your account</Text>
 
         <Input
-          placeHolder="Enter run forest"
+          placeHolder="Enter your e-mail address"
           iconName="mail-outline"
           label="E-Mail"
           keyboardType="email"
@@ -60,7 +60,7 @@ export default function Login({navigation}) {
           password={false}
         />
         <Input
-          placeHolder="Enter run forest"
+          placeHolder="Enter your password"
           iconName="mail-outline"
           label="Password"
           onChangeText={text => HandleOnchange(text, 'password')}

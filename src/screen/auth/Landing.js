@@ -1,20 +1,20 @@
-import React from 'react';
+import React from 'react'
 import {
   StyleSheet,
   Text,
   View,
   TouchableOpacity,
-  ImageBackground
-} from 'react-native';
-import Background from './Background';
-import Button from '../../component/Button';
-import Color from '../../const/Color';
+  ImageBackground,
+} from 'react-native'
+import Background from './Background'
+import Button from '../../component/Button'
+import Color from '../../const/Color'
 
 export default function Landing({navigation}) {
   return (
     <Background>
       <View style={styles.container}>
-        <Text style={styles.textStyle}>now it's time for yazzar</Text>
+        <Text style={styles.textStyle}></Text>
         <Button
           label={'Sign Up'}
           backgroundColor={Color.white}
@@ -29,19 +29,19 @@ export default function Landing({navigation}) {
         />
       </View>
     </Background>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     marginHorizontal: 40,
-    marginVertical: 100
+    marginVertical: 100,
   },
   textStyle: {
     color: Color.white,
     fontSize: 38,
     marginBottom: 250,
-    textAlign: 'center'
-  }
-});
+    textAlign: 'center',
+  },
+})
