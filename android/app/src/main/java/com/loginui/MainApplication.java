@@ -1,4 +1,4 @@
-package com.socialapp;
+package com.loginui;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
