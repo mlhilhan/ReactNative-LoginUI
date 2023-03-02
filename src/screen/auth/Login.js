@@ -43,7 +43,6 @@ export default function Login({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Loader visible={loading} />
       <View style={styles.freeAreaContainer} />
       <View style={styles.subContainer}>
         <Text style={styles.titleText}>Welcome Back</Text>
@@ -53,7 +52,8 @@ export default function Login({navigation}) {
           placeHolder="Enter your e-mail address"
           iconName="mail-outline"
           label="E-Mail"
-          keyboardType="email"
+          autoCapitalize="none"
+          keyboardType="email-address"
           onChangeText={text => HandleOnchange(text, 'email')}
           onFocus={() => HandleError(null, 'email')}
           error={errors.email}
@@ -85,6 +85,8 @@ export default function Login({navigation}) {
           </Text>
         </View>
       </View>
+
+      <Loader visible={loading} />
     </View>
   )
 }

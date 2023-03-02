@@ -7,8 +7,14 @@ import Color from '../../const/Color'
 
 export default function SignUp({navigation}) {
   const [errors, setErrors] = useState({})
-  const [inputs, setInputs] = useState({email: '', password: ''})
   const [loading, setLoading] = useState(false)
+  const [inputs, setInputs] = useState({
+    email: '',
+    username: '',
+    fullName: '',
+    password: '',
+    passwordAgain: '',
+  })
 
   const Validate = () => {
     Keyboard.dismiss()
@@ -19,6 +25,10 @@ export default function SignUp({navigation}) {
     }
     if (!inputs.password) {
       HandleError('Please input password', 'password')
+      isValid = false
+    }
+    if (!inputs.passwordAgain) {
+      HandleError('Please input password again', 'passwordAgain')
       isValid = false
     }
     if (isValid) {
@@ -42,59 +52,66 @@ export default function SignUp({navigation}) {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Loader visible={loading} />
-      <View style={styles.freeAreaContainer} />
-
-      <View style={styles.subContainer}>
-        <Text style={styles.titleText}>Welcome</Text>
-        <Text style={styles.subTitleText}>Create a new account</Text>
-
-        <Input
-          placeHolder="Enter your e-mail address"
-          iconName="mail-outline"
-          label="E-Mail"
-          autoCapitalize="none"
-          keyboardType="email-address"
-          onChangeText={text => HandleOnchange(text, 'email')}
-          onFocus={() => HandleError(null, 'email')}
-          error={errors.email}
-        />
-        <Input
-          placeHolder="Enter your full name"
-          iconName="person-outline"
-          label="Full Name"
-          onChangeText={text => HandleOnchange(text, 'fullName')}
-        />
-        <Input
-          placeHolder="Enter your password"
-          iconName="md-lock-closed-outline"
-          label="Password"
-          onChangeText={text => HandleOnchange(text, 'password')}
-          onFocus={() => HandleError(null, 'password')}
-          error={errors.password}
-          password={true}
-        />
-        <Input
-          placeHolder="Enter your retry password"
-          iconName="md-lock-closed-outline"
-          label="Password Again"
-          onChangeText={text => HandleOnchange(text, 'password')}
-          onFocus={() => HandleError(null, 'password')}
-          error={errors.password}
-          password={true}
-        />
-
-        <View style={styles.subButtonContainer}>
-          <Button
-            label={'Sign Up'}
-            backgroundColor={Color.darkGreen}
-            textColor={Color.white}
-            onPress={Validate}
+    <View>
+      <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.freeAreaContainer} />
+        <View style={styles.subContainer}>
+          <Text style={styles.titleText}>Welcome</Text>
+          <Text style={styles.subTitleText}>Create a new account</Text>
+          <Input
+            placeHolder="Enter your e-mail address"
+            iconName="mail-outline"
+            label="E-Mail"
+            autoCapitalize="none"
+            keyboardType="email-address"
+            onChangeText={text => HandleOnchange(text, 'email')}
+            onFocus={() => HandleError(null, 'email')}
+            error={errors.email}
           />
+          <Input
+            placeHolder="Enter your username"
+            iconName="person-outline"
+            label="Username"
+            autoCapitalize="none"
+            onChangeText={text => HandleOnchange(text, 'username')}
+          />
+          <Input
+            placeHolder="Enter your full name"
+            iconName="person-outline"
+            label="Full Name"
+            onChangeText={text => HandleOnchange(text, 'fullName')}
+          />
+          <Input
+            placeHolder="Enter your password"
+            iconName="md-lock-closed-outline"
+            label="Password"
+            onChangeText={text => HandleOnchange(text, 'password')}
+            onFocus={() => HandleError(null, 'password')}
+            error={errors.password}
+            password={true}
+          />
+          <Input
+            placeHolder="Enter your password again"
+            iconName="md-lock-closed-outline"
+            label="Password Again"
+            onChangeText={text => HandleOnchange(text, 'passwordAgain')}
+            onFocus={() => HandleError(null, 'passwordAgain')}
+            error={errors.passwordAgain}
+            password={true}
+          />
+          <View style={styles.subButtonContainer}>
+            <Button
+              label={'Sign Up'}
+              backgroundColor={Color.darkGreen}
+              textColor={Color.white}
+              onPress={Validate}
+            />
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+
+      <Loader visible={loading} />
+    </View>
   )
 }
 
