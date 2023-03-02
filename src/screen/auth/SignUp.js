@@ -45,7 +45,6 @@ export default function SignUp({navigation}) {
     <View style={styles.container}>
       <Loader visible={loading} />
       <View style={styles.freeAreaContainer} />
-
       <View style={styles.subContainer}>
         <Text style={styles.titleText}>Welcome Back</Text>
         <Text style={styles.subTitleText}>Login to your account</Text>
