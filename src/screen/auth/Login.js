@@ -57,7 +57,7 @@ export default function Login({navigation}) {
           onChangeText={text => HandleOnchange(text, 'email')}
           onFocus={() => HandleError(null, 'email')}
           error={errors.email}
-          password={false}
+          fieldRequired={true}
         />
         <Input
           placeHolder="Enter your password"
@@ -67,6 +67,7 @@ export default function Login({navigation}) {
           onFocus={() => HandleError(null, 'password')}
           error={errors.password}
           password={true}
+          fieldRequired={true}
         />
 
         <View style={styles.subButtonContainer}>
@@ -77,11 +78,11 @@ export default function Login({navigation}) {
             onPress={Validate}
           />
         </View>
-        <View style={styles.forgotPasswordContainer}>
+        <View style={styles.goSignUpContainer}>
           <Text
             onPress={() => navigation.navigate('SignUp')}
-            style={styles.forgotPasswordText}>
-            Don't have an account? Register.
+            style={styles.goSignUpText}>
+            Don't have an account? Sign Up.
           </Text>
         </View>
       </View>
@@ -130,12 +131,12 @@ const styles = StyleSheet.create({
     width: '80%',
     marginTop: 100,
   },
-  forgotPasswordContainer: {
+  goSignUpContainer: {
     alignItems: 'center',
     width: '80%',
     paddingRight: 16,
   },
-  forgotPasswordText: {
+  goSignUpText: {
     color: Color.darkGreen,
     fontWeight: 'bold',
     textAlign: 'center',

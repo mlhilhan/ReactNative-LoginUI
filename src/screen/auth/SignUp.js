@@ -23,6 +23,10 @@ export default function SignUp({navigation}) {
       HandleError('Please input email', 'email')
       isValid = false
     }
+    if (!inputs.username) {
+      HandleError('Please input username', 'username')
+      isValid = false
+    }
     if (!inputs.password) {
       HandleError('Please input password', 'password')
       isValid = false
@@ -67,6 +71,7 @@ export default function SignUp({navigation}) {
             onChangeText={text => HandleOnchange(text, 'email')}
             onFocus={() => HandleError(null, 'email')}
             error={errors.email}
+            fieldRequired={true}
           />
           <Input
             placeHolder="Enter your username"
@@ -74,6 +79,9 @@ export default function SignUp({navigation}) {
             label="Username"
             autoCapitalize="none"
             onChangeText={text => HandleOnchange(text, 'username')}
+            onFocus={() => HandleError(null, 'username')}
+            error={errors.username}
+            fieldRequired={true}
           />
           <Input
             placeHolder="Enter your full name"
@@ -89,6 +97,7 @@ export default function SignUp({navigation}) {
             onFocus={() => HandleError(null, 'password')}
             error={errors.password}
             password={true}
+            fieldRequired={true}
           />
           <Input
             placeHolder="Enter your password again"
@@ -98,6 +107,7 @@ export default function SignUp({navigation}) {
             onFocus={() => HandleError(null, 'passwordAgain')}
             error={errors.passwordAgain}
             password={true}
+            fieldRequired={true}
           />
           <View style={styles.subButtonContainer}>
             <Button
@@ -106,6 +116,13 @@ export default function SignUp({navigation}) {
               textColor={Color.white}
               onPress={Validate}
             />
+          </View>
+          <View style={styles.goLoginContainer}>
+            <Text
+              onPress={() => navigation.navigate('Login')}
+              style={styles.goLoginText}>
+              Already have an account? Login.
+            </Text>
           </View>
         </View>
       </ScrollView>
@@ -152,5 +169,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '80%',
     marginTop: 100,
+  },
+  goLoginContainer: {
+    alignItems: 'center',
+    width: '80%',
+    paddingRight: 16,
+  },
+  goLoginText: {
+    color: Color.darkGreen,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 16,
   },
 })

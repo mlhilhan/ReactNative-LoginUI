@@ -11,6 +11,7 @@ export default function Input({
   placeHolder,
   keyboardType,
   autoCapitalize,
+  fieldRequired,
   onFocus = () => {},
   ...props
 }) {
@@ -19,7 +20,14 @@ export default function Input({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.labelTextStyle}>{label}</Text>
+      <View style={{flexDirection: 'row'}}>
+        <Text style={styles.labelTextStyle}>{label}</Text>
+        {fieldRequired ? (
+          <Text style={styles.requiredStarStyle}> *</Text>
+        ) : (
+          <></>
+        )}
+      </View>
 
       <View
         style={[
@@ -71,7 +79,12 @@ const styles = StyleSheet.create({
   labelTextStyle: {
     marginVertical: 5,
     fontSize: 14,
-    color: Color.grey,
+    color: Color.darkGreen,
+  },
+  requiredStarStyle: {
+    color: 'red',
+    fontSize: 17,
+    height: 13,
   },
   inputContainer: {
     height: 55,

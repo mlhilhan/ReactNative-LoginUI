@@ -14,7 +14,7 @@ export default function Landing({navigation}) {
   return (
     <Background>
       <View style={styles.container}>
-        <Text style={styles.textStyle}></Text>
+        <Text style={styles.textStyle}>Application Name</Text>
         <Button
           label={'Sign Up'}
           backgroundColor={Color.white}
