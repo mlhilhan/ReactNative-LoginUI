@@ -151,7 +151,7 @@ export default function SignUp({navigation}) {
         visible={errorModalVisible}
         onRequestClose={() => setErrorModalVisible(!errorModalVisible)}
         singleButtonOnPress={() => setErrorModalVisible(!errorModalVisible)}
-        iconName={'ios-close-circle'}
+        iconName={'close-circle'}
         iconColor={Color.red}
         singleButtonLabel={'Okey'}
         title={'Error'}
