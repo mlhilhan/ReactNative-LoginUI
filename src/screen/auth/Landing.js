@@ -18,12 +18,14 @@ export default function Landing({navigation}) {
         <Button
           label={'Sign Up'}
           backgroundColor={Color.white}
+          width={300}
           textColor={Color.darkGreen}
           onPress={() => navigation.navigate('SignUp')}
         />
         <Button
           label={'Login'}
           backgroundColor={Color.darkGreen}
+          width={300}
           textColor={Color.white}
           onPress={() => navigation.navigate('Login')}
         />

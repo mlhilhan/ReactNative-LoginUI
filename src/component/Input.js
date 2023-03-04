@@ -40,7 +40,7 @@ export default function Input({
               : Color.light,
           },
         ]}>
-        <Icon name={iconName} color="#fff" size={30} style={styles.iconStyle} />
+        <Icon name={iconName} size={30} style={styles.iconStyle} />
         <TextInput
           {...props}
           autoCapitalize={autoCapitalize}

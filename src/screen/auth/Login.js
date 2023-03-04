@@ -4,11 +4,14 @@ import Input from '../../component/Input'
 import Button from '../../component/Button'
 import Color from '../../const/Color'
 import Loader from '../../component/Loader'
+import ModalMessage from '../../component/ModalMessage'
 
 export default function Login({navigation}) {
   const [errors, setErrors] = useState({})
   const [inputs, setInputs] = useState({email: '', password: ''})
   const [loading, setLoading] = useState(false)
+  const [errorModalVisible, setErrorModalVisible] = useState(false)
+  const [errorModalMessage, setErrorModalMessage] = useState('')
 
   const Validate = () => {
     Keyboard.dismiss()
@@ -16,10 +19,14 @@ export default function Login({navigation}) {
     if (!inputs.email) {
       HandleError('Please input email', 'email')
       isValid = false
+      setErrorModalVisible(true)
+      setErrorModalMessage('There are required fields to be filled.')
     }
     if (!inputs.password) {
       HandleError('Please input password', 'password')
       isValid = false
+      setErrorModalVisible(true)
+      setErrorModalMessage('There are required fields to be filled.')
     }
     if (isValid) {
       Login()
@@ -38,6 +45,7 @@ export default function Login({navigation}) {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
+      setErrorModalMessage('')
     }, 200)
   }
 
@@ -61,7 +69,7 @@ export default function Login({navigation}) {
         />
         <Input
           placeHolder="Enter your password"
-          iconName="mail-outline"
+          iconName="md-lock-closed-outline"
           label="Password"
           onChangeText={text => HandleOnchange(text, 'password')}
           onFocus={() => HandleError(null, 'password')}
@@ -75,6 +83,7 @@ export default function Login({navigation}) {
             label={'Login'}
             backgroundColor={Color.darkGreen}
             textColor={Color.white}
+            width={300}
             onPress={Validate}
           />
         </View>
@@ -88,6 +97,17 @@ export default function Login({navigation}) {
       </View>
 
       <Loader visible={loading} />
+
+      <ModalMessage
+        visible={errorModalVisible}
+        onRequestClose={() => setErrorModalVisible(!errorModalVisible)}
+        singleButtonOnPress={() => setErrorModalVisible(!errorModalVisible)}
+        iconName={'ios-close-circle'}
+        iconColor={Color.red}
+        singleButtonLabel={'Okey'}
+        title={'Error'}
+        message={errorModalMessage}
+      />
     </View>
   )
 }

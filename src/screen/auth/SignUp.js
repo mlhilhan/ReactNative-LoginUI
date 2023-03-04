@@ -3,11 +3,14 @@ import {StyleSheet, Text, View, Keyboard, ScrollView} from 'react-native'
 import Button from '../../component/Button'
 import Input from '../../component/Input'
 import Loader from '../../component/Loader'
+import ModalMessage from '../../component/ModalMessage'
 import Color from '../../const/Color'
 
 export default function SignUp({navigation}) {
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
+  const [errorModalVisible, setErrorModalVisible] = useState(false)
+  const [errorModalMessage, setErrorModalMessage] = useState('')
   const [inputs, setInputs] = useState({
     email: '',
     username: '',
@@ -22,18 +25,31 @@ export default function SignUp({navigation}) {
     if (!inputs.email) {
       HandleError('Please input email', 'email')
       isValid = false
+      setErrorModalVisible(true)
+      setErrorModalMessage('There are required fields to be filled.')
     }
     if (!inputs.username) {
       HandleError('Please input username', 'username')
       isValid = false
+      setErrorModalVisible(true)
+      setErrorModalMessage('There are required fields to be filled.')
     }
     if (!inputs.password) {
       HandleError('Please input password', 'password')
       isValid = false
+      setErrorModalVisible(true)
+      setErrorModalMessage('There are required fields to be filled.')
     }
     if (!inputs.passwordAgain) {
       HandleError('Please input password again', 'passwordAgain')
       isValid = false
+      setErrorModalVisible(true)
+      setErrorModalMessage('There are required fields to be filled.')
+    }
+    if (isValid == true && inputs.password != inputs.passwordAgain) {
+      isValid = false
+      setErrorModalVisible(true)
+      setErrorModalMessage('The passwords entered are not the same.')
     }
     if (isValid) {
       Register()
@@ -52,6 +68,7 @@ export default function SignUp({navigation}) {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
+      setErrorModalMessage('')
     }, 200)
   }
 
@@ -114,6 +131,7 @@ export default function SignUp({navigation}) {
               label={'Sign Up'}
               backgroundColor={Color.darkGreen}
               textColor={Color.white}
+              width={300}
               onPress={Validate}
             />
           </View>
@@ -128,6 +146,17 @@ export default function SignUp({navigation}) {
       </ScrollView>
 
       <Loader visible={loading} />
+
+      <ModalMessage
+        visible={errorModalVisible}
+        onRequestClose={() => setErrorModalVisible(!errorModalVisible)}
+        singleButtonOnPress={() => setErrorModalVisible(!errorModalVisible)}
+        iconName={'ios-close-circle'}
+        iconColor={Color.red}
+        singleButtonLabel={'Okey'}
+        title={'Error'}
+        message={errorModalMessage}
+      />
     </View>
   )
 }

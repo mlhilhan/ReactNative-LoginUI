@@ -1,7 +1,14 @@
 import React from 'react'
 import {Text, TouchableOpacity} from 'react-native'
 
-export default function Button({backgroundColor, label, textColor, onPress}) {
+export default function Button({
+  backgroundColor,
+  label,
+  textColor,
+  onPress,
+  width = 300,
+  fontSize = 20,
+}) {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -9,14 +16,14 @@ export default function Button({backgroundColor, label, textColor, onPress}) {
         backgroundColor: backgroundColor,
         borderRadius: 100,
         alignItems: 'center',
-        width: 300,
+        width: width,
         paddingVertical: 5,
         marginVertical: 10,
       }}>
       <Text
         style={{
           color: textColor,
-          fontSize: 20,
+          fontSize: fontSize,
           fontWeight: 'bold',
         }}>
         {label}
